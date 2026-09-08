@@ -8,13 +8,29 @@ A stack-agnostic security-audit skill that scans any codebase against **20 check
 
 ## Install
 
-One command from this repo's root:
+**Lazy way — one command, no clone needed.** Picks up the latest version; re-run to update.
+
+macOS / Linux:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/AmineMabrouk17/Shield/main/scripts/install-remote.sh | bash
+```
+
+Windows (PowerShell or cmd):
+
+```powershell
+powershell -NoProfile -c "iwr -useb https://raw.githubusercontent.com/AmineMabrouk17/Shield/main/scripts/install-remote.ps1 | iex"
+```
+
+This copies the skill into `~/.agents/skills/shield`, making `/shield` available in **any** project with zero per-project setup. Re-running the same one-liner re-fetches the latest.
+
+**Developing on Shield itself** — clone this repo, then symlink so your edits are live everywhere:
 
 ```bash
 ./scripts/install.sh
 ```
 
-This symlinks `~/.agents/skills/shield` to this repo's `.agents/skills/shield`, making `/shield` available in **any** project with zero per-project setup. Re-run it anytime — it's idempotent, and `FORCE=1` re-points an existing symlink.
+This symlinks `~/.agents/skills/shield` to this repo's `.agents/skills/shield`. It's idempotent, and `FORCE=1` re-points an existing install.
 
 ## Usage
 
@@ -67,6 +83,7 @@ repo: my-project        date: 2026-09-08        stack: Node 20 / Express / Postg
 ## Development
 
 - `SKILL.md` — the full skill: workflow, scoring, and the per-check reference. Single self-contained file by design.
-- `scripts/install.sh` — the one-command installer.
+- `scripts/install.sh` — local symlink installer (developing on Shield itself).
+- `scripts/install-remote.sh` / `scripts/install-remote.ps1` — the lazy one-liner installers (fetch + copy).
 
-Edits to the skill are live in every project instantly, because the global install is a symlink back to this repo.
+Edits to the skill are live in every project instantly behind a symlink install; a remote (copy) install updates on re-run of the one-liner.
