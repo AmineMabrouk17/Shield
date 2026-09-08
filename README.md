@@ -1,4 +1,6 @@
-<img src="Logo.png" alt="Shield" width="200" align="right">
+<p align="center">
+  <img src="Logo.png" alt="Shield" width="400">
+</p>
 
 # Shield
 
